@@ -1,9 +1,13 @@
 import { Outlet } from "react-router";
+import NavMenu from "../components/nav-menu/NavMenu";
 
 function RootLayout() {
   return (
     <>
-      <Outlet />
+      <NavMenu />
+      <main className="flex justify-center items-center h-screen">
+        <Outlet />
+      </main>
     </>
   );
 }

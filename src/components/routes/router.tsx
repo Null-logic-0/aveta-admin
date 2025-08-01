@@ -9,6 +9,10 @@ import SuccessMessage from "../../pages/success-message";
 import Home from "../../pages/home";
 import RootLayout from "../../pages/root";
 import NotAllowedWarningPage from "../../pages/not-allowed";
+import Media from "../../pages/media";
+import Blogs from "../../pages/blogs";
+import CreateBlog from "../../pages/create-blog";
+import EditBlog from "../../pages/edit-blog";
 
 export const router = createBrowserRouter([
   {
@@ -48,6 +52,22 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "/media",
+        element: <Media />,
+      },
+      {
+        path: "/blogs",
+        element: <Blogs />,
+      },
+      {
+        path: "/create-blog",
+        element: <CreateBlog />,
+      },
+      {
+        path: "/edit-blog",
+        element: <EditBlog />,
       },
     ],
   },
