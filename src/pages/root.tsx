@@ -5,7 +5,7 @@ function RootLayout() {
   return (
     <>
       <NavMenu />
-      <main className="flex justify-center items-center px-6 py-4 w-full mx-auto max-w-[1200px]">
+      <main className="flex justify-center mt-20 max-w-[1200px]  items-center px-6 py-4 w-full mx-auto ">
         <Outlet />
       </main>
     </>

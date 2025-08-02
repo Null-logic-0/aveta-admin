@@ -61,7 +61,7 @@ export function useSignIn() {
 
         setFormErrors(newErrors);
       }
-      toast.error(error.message || "Failed to create character");
+      toast.error(error.message || "Failed to sign in!");
     },
   });
 
