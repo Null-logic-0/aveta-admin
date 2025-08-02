@@ -8,6 +8,7 @@ export interface GetMeResponse {
       role: string;
       UserPlan: string;
       isPaid: boolean;
+      isBlocked: boolean;
       googleId?: string;
       createdAt: string;
       updatedAt: string;
