@@ -11,6 +11,7 @@ import type {
 import type { GetMeResponse } from "../interfaces/current-user-response.interface";
 import { URL } from "../constants/url.constants";
 import type { UpdateUserRoleInterface } from "../interfaces/user.interface";
+import type { BlogFieldsInterface } from "../interfaces/blog.interface";
 
 export async function signin(data: SignInRequest): Promise<AuthResponse> {
   try {
@@ -188,5 +189,107 @@ export async function deleteUser(token: string, userId: number) {
     });
   } catch (err) {
     throw buildApiError(`Failed to delete user!`, 500, err);
+  }
+}
+
+// Blogs
+
+export async function createBlog(token: string, data: BlogFieldsInterface) {
+  assertTokenExists(token);
+
+  const formData = new FormData();
+  formData.append("title", data.title);
+  formData.append("excerpt", data.excerpt);
+  formData.append("media", data.media);
+
+  try {
+    const response = await axios.post(`${URL}/blogs`, formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (err: unknown) {
+    if (isAxiosError(err)) {
+      if (err.response?.status === 400) {
+        throw buildValidationError("Validation failed", 400, err.response.data);
+      }
+      throw buildApiError(
+        `Failed to create blog!`,
+        500,
+        err.response?.data || err
+      );
+    }
+    throw err;
+  }
+}
+
+export async function updateBlog(
+  token: string,
+  blogId: number,
+  data: BlogFieldsInterface
+) {
+  assertTokenExists(token);
+
+  const formData = new FormData();
+  formData.append("title", data.title);
+  formData.append("excerpt", data.excerpt);
+  formData.append("media", data.media);
+
+  try {
+    const response = await axios.patch(`${URL}/blogs/${blogId}`, formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (err: unknown) {
+    if (isAxiosError(err)) {
+      if (err.response?.status === 400) {
+        throw buildValidationError("Validation failed", 400, err.response.data);
+      }
+      throw buildApiError(
+        `Failed to update blog!`,
+        500,
+        err.response?.data || err
+      );
+    }
+    throw err;
+  }
+}
+
+export async function fetchAllBlogs(page?: number, limit?: number) {
+  try {
+    const response = await axios.get(`${URL}/blogs`, {
+      params: { page, limit },
+    });
+    return response.data;
+  } catch (err) {
+    throw buildApiError(`Failed to fetch all blogs!`, 500, err);
+  }
+}
+
+export async function fetchSingleBlog(blogId: number) {
+  try {
+    const response = await axios.get(`${URL}/blogs/${blogId}`);
+    return response.data;
+  } catch (err) {
+    throw buildApiError(`Failed to fetch single blog!`, 500, err);
+  }
+}
+
+export async function deleteBlog(token: string, blogId: number) {
+  assertTokenExists(token);
+  try {
+    return await axios.delete(`${URL}/blogs/${blogId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      withCredentials: true,
+    });
+  } catch (err) {
+    throw buildApiError(`Failed to delete blog!`, 500, err);
   }
 }

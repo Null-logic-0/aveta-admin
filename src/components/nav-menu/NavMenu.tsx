@@ -5,7 +5,7 @@ import UserProfileMenu from "../user-profile-menu/UserProfileMenu";
 
 function NavMenu() {
   return (
-    <header className="bg-[#18181b]/50 z-50 fixed top-0 w-full">
+    <header className="bg-[#11141D] z-50 fixed top-0 w-full">
       <nav className="flex justify-between items-center px-6 py-4">
         <Link to={"/"}>
           <Logo />

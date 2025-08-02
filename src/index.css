@@ -132,8 +132,8 @@ input:-webkit-autofill {
 
 :where(.css-dev-only-do-not-override-1vjf2v5).ant-btn-variant-outlined,
 :where(.css-dev-only-do-not-override-1vjf2v5).ant-btn-variant-dashed {
-  background-color: #1e1e1e;
-  border: 1px solid #ff4dc3;
+  background-color: #1e1e25;
+  border: 1px solid #3b3a3f;
   color: #fff;
 }
 
@@ -143,21 +143,21 @@ input:-webkit-autofill {
 :where(.css-dev-only-do-not-override-1vjf2v5).ant-btn-variant-dashed:not(
     :disabled
   ):not(.ant-btn-disabled):hover {
-  background-color: #1e1e1e;
-  border: 1px solid #ff4dc3;
+  background-color: #1e1e25;
+  border: 1px solid #3b3a3f;
   color: #fff;
 }
 
 :where(.css-dev-only-do-not-override-1vjf2v5).ant-btn-variant-solid {
-  background-color: #ff4dc3;
+  background-color: #8a38f5;
 }
 :where(.css-dev-only-do-not-override-1vjf2v5).ant-btn-variant-solid {
-  background-color: #ff4dc3;
+  background-color: #8a38f5;
 }
 :where(.css-dev-only-do-not-override-1vjf2v5).ant-btn-variant-solid:not(
     :disabled
   ):not(.ant-btn-disabled):hover {
-  background-color: #ff4dc3;
+  background-color: #8a38f5;
 }
 
 :where(.css-dev-only-do-not-override-1vjf2v5).ant-pagination
@@ -200,4 +200,15 @@ input:-webkit-autofill {
 :where(.css-dev-only-do-not-override-1vjf2v5).ant-pagination
   .ant-pagination-item:not(.ant-pagination-item-active):hover {
   background-color: #ff4dc3;
+}
+:where(.css-dev-only-do-not-override-1vjf2v5).ant-result .ant-result-title {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  opacity: 50%;
+}
+:where(.css-dev-only-do-not-override-1vjf2v5).ant-result
+  .ant-result-icon
+  > .anticon {
+  font-size: 38px;
 }
