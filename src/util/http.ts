@@ -10,6 +10,7 @@ import type {
 } from "../interfaces/auth-api.interface";
 import type { GetMeResponse } from "../interfaces/current-user-response.interface";
 import { URL } from "../constants/url.constants";
+import type { UpdateUserRoleInterface } from "../interfaces/user.interface";
 
 export async function signin(data: SignInRequest): Promise<AuthResponse> {
   try {
@@ -119,10 +120,10 @@ export async function getMe(token: string): Promise<GetMeResponse> {
   }
 }
 
-export async function getSingleUser(token: string, id: number) {
+export async function getAllUsers(token: string) {
   assertTokenExists(token);
   try {
-    const response = await axios.get(`${URL}/users/user/${id}`, {
+    const response = await axios.get(`${URL}/users`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -130,6 +131,62 @@ export async function getSingleUser(token: string, id: number) {
     });
     return response.data;
   } catch (err) {
-    throw buildApiError("Failed to get user profile!", 500, err);
+    throw buildApiError("Failed to fetch all users!", 500, err);
+  }
+}
+
+export async function updateUserRole(
+  token: string,
+  userId: number,
+  data: UpdateUserRoleInterface
+) {
+  assertTokenExists(token);
+  try {
+    const response = await axios.patch(
+      `${URL}/users/update-role/${userId}`,
+      data,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (err) {
+    throw buildApiError("Failed to update user role!", 500, err);
+  }
+}
+
+export async function toggleBlockUser(token: string, userId: number) {
+  assertTokenExists(token);
+
+  try {
+    const response = await axios.patch(
+      `${URL}/users/toggle-block-user/${userId}`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        withCredentials: true,
+      }
+    );
+    return response.data;
+  } catch (err) {
+    throw buildApiError(`Operation failed!`, 500, err);
+  }
+}
+
+export async function deleteUser(token: string, userId: number) {
+  assertTokenExists(token);
+  try {
+    return await axios.delete(`${URL}/users/delete-user/${userId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      withCredentials: true,
+    });
+  } catch (err) {
+    throw buildApiError(`Failed to delete user!`, 500, err);
   }
 }

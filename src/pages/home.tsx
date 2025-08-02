@@ -1,5 +1,7 @@
+import UserTable from "../components/user-table/UserTable";
+
 function Home() {
-  return <div className="flex flex-col items-center justify-center">home</div>;
+  return <UserTable />;
 }
 
 export default Home;
