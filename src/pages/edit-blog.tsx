@@ -7,9 +7,14 @@ import { useFetchSingleBlog } from "../hooks/useFetchSingleBlog";
 import type { BlogInterface } from "../interfaces/blog.interface";
 import Spinner from "../components/UI/spinner/Spinner";
 import AppResult from "../components/UI/Result";
+import Heading from "../components/UI/Heading";
+import Button from "../components/UI/Button";
+import { useDispatch } from "react-redux";
+import { open } from "../store/UI-slice";
 
 function EditBlog() {
   const { blogId } = useParams();
+  const dispatch = useDispatch();
 
   const numericId = toNumericId(blogId);
   const { mutate, isPending, formErrors } = useUpdateBlog({
@@ -60,12 +65,23 @@ function EditBlog() {
   }
   return (
     <main className="flex flex-col gap-8">
+      <Heading isTitle title="Edit blog" />
       <BlogForm
         onSubmit={submitHandler}
         isPending={isPending}
         error={formErrors}
         blog={blog}
       />
+      <div className="flex justify-end">
+        <Button
+          type="button"
+          buttonType="outline"
+          className="w-[30%] text-red-700"
+          onClick={() => dispatch(open(numericId))}
+        >
+          Delete
+        </Button>
+      </div>
       <DeleteBlog blogId={numericId!} />
     </main>
   );

@@ -212,3 +212,15 @@ input:-webkit-autofill {
   > .anticon {
   font-size: 38px;
 }
+
+:where(.css-dev-only-do-not-override-1vjf2v5).ant-upload-wrapper
+  .ant-upload-drag {
+  border: 1px dashed #8a38f5;
+}
+
+:where(.css-dev-only-do-not-override-1vjf2v5).ant-upload-wrapper
+  .ant-upload-drag:not(.ant-upload-disabled):hover,
+:where(.css-dev-only-do-not-override-1vjf2v5).ant-upload-wrapper
+  .ant-upload-drag-hover:not(.ant-upload-disabled) {
+  border-color: #8a38f5;
+}

@@ -13,7 +13,7 @@ function DropDownMenu({ className, children }: UserProfileMenuListProps) {
         className
       )}
     >
-      <ul className="bg-[#11141D] border border-[#3B3A3F] w-full rounded-[6px]  p-2 flex flex-col gap-2">
+      <ul className="bg-[#11141D]  border border-[#3B3A3F] w-full rounded-[6px]  p-2 flex flex-col gap-2">
         {children}
       </ul>
     </div>

@@ -1,9 +1,9 @@
+import Modal from "../UI/modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
-import Button from "../UI/Button";
 import type { RootState } from "../../store";
-import AppModal from "../UI/Modal";
-import { close, open } from "../../store/UI-slice";
+import { close } from "../../store/UI-slice";
 import { useDeleteBlog } from "../../hooks/useDeleteBlog";
+import Button from "../UI/Button";
 
 function DeleteBlog({ blogId }: { blogId: number }) {
   const { mutate, isPending } = useDeleteBlog({ id: blogId });
@@ -13,30 +13,32 @@ function DeleteBlog({ blogId }: { blogId: number }) {
   const closeModalHandler = () => dispatch(close());
   return (
     <>
-      <div className="flex justify-end">
-        <Button
-          type="button"
-          buttonType="outline"
-          className="w-[30%]"
-          onClick={() => dispatch(open(blogId))}
-        >
-          Delete
-        </Button>
-      </div>
-      <AppModal
-        title="Delete Account"
-        onClose={closeModalHandler}
-        isOpen={showModal === blogId}
-        onOk={() => {
-          mutate();
-          closeModalHandler();
-        }}
-        loading={isPending}
-      >
-        <p className="text-sm font-semibold">
-          Do you really want to delete blog with ID:{blogId}?
-        </p>
-      </AppModal>
+      {showModal === blogId && (
+        <Modal onClose={closeModalHandler}>
+          <p className="text-sm font-semibold mb-6 text-center text-white">
+            Are you sure you want to delete this blog?
+          </p>
+          <div className="flex justify-center gap-2 items-center">
+            <Button
+              isDisabled={isPending}
+              buttonType="outline"
+              onClick={closeModalHandler}
+              className="text-white"
+              type="button"
+            >
+              Cancel
+            </Button>
+            <Button
+              className="text-white"
+              onClick={() => mutate()}
+              isDisabled={isPending}
+              isPending={isPending}
+            >
+              {isPending ? "Deleting..." : "Delete"}
+            </Button>
+          </div>
+        </Modal>
+      )}
     </>
   );
 }
