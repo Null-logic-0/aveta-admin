@@ -1,6 +1,6 @@
-import { imageTags } from "../../constants/tag.constants";
 import Tab from "../UI/Tab";
 import { useSearchParams } from "react-router";
+import { imageTags } from "../../constants/tag.constants";
 
 function ImageSort() {
   const [searchParams, setSearchParams] = useSearchParams();

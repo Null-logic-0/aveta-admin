@@ -1,6 +1,6 @@
 import { Form, Select } from "antd";
-import { useUpdateUserRole } from "../../hooks/useUpdateUserRole";
 import type { Role } from "../../enums/role.enum";
+import { useUpdateUserRole } from "../../hooks/useUpdateUserRole";
 
 type RoleTypes = {
   id: number;

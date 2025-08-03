@@ -1,5 +1,5 @@
-import { LockFilled, UnlockFilled } from "@ant-design/icons";
 import toast from "react-hot-toast";
+import { LockFilled, UnlockFilled } from "@ant-design/icons";
 import { useToggleBlockUser } from "../../hooks/useToggleBlockUser";
 
 type ToggleBlockUserType = {
