@@ -1,9 +1,9 @@
+import DeleteBlog from "./DeleteBlog";
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { open } from "../../store/UI-slice";
-import DeleteBlog from "./DeleteBlog";
 
 function BlogActionButtons({ blogId }: { blogId: number }) {
   const navigate = useNavigate();

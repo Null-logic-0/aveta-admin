@@ -1,12 +1,12 @@
-import { EntityImageType } from "../../enums/entity-images.enum";
-import { useUploadEntityImage } from "../../hooks/useUploadEntityImage";
 import type { RootState } from "../../store";
 import { close } from "../../store/UI-slice";
-import DragAndDropUpload from "../UI/DragAndDropUpload";
 import { IoImageOutline } from "react-icons/io5";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import SpinnerMini from "../UI/spinner-mini/SpinnerMini";
+import DragAndDropUpload from "../UI/DragAndDropUpload";
+import { EntityImageType } from "../../enums/entity-images.enum";
+import { useUploadEntityImage } from "../../hooks/useUploadEntityImage";
 
 function ImageUpload() {
   const { mutate, isPending } = useUploadEntityImage();

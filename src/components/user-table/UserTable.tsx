@@ -1,8 +1,9 @@
 import { Table } from "antd";
-import { useFetchAllUsers } from "../../hooks/useFetchAllUsers";
 import Heading from "../UI/Heading";
-import { columns } from "./user-table-columns";
 import AppResult from "../UI/Result";
+
+import { columns } from "./user-table-columns";
+import { useFetchAllUsers } from "../../hooks/useFetchAllUsers";
 
 function UserTable() {
   const { data: users, isPending, error, isError } = useFetchAllUsers();

@@ -224,3 +224,10 @@ input:-webkit-autofill {
   .ant-upload-drag-hover:not(.ant-upload-disabled) {
   border-color: #8a38f5;
 }
+
+:where(.css-dev-only-do-not-override-1vjf2v5).ant-result .ant-result-subtitle {
+  color: #fff;
+  opacity: 50%;
+  font-size: 14px;
+  font-weight: 600;
+}

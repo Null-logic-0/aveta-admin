@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Navigate, useLocation } from "react-router";
-import { useAuth } from "../../hooks/useAuth";
 import { useDispatch } from "react-redux";
+import Spinner from "../UI/spinner/Spinner";
+import { useAuth } from "../../hooks/useAuth";
+import { Navigate, useLocation } from "react-router";
 import { clearAuth } from "../../store/auth-slice";
 
 type ProtectRoutesProps = {
@@ -29,7 +30,12 @@ function ProtectRoutes({
     }
   }, [isPending, token, redirectIfAuthenticated, isAdmin, dispatch]);
 
-  if (token && isPending) return <div>Loading...</div>;
+  if (token && isPending)
+    return (
+      <div className="flex justify-center items-center  h-screen">
+        <Spinner />
+      </div>
+    );
 
   if (!redirectIfAuthenticated && !token) {
     return <Navigate to="/sign-in" replace state={{ from: location }} />;

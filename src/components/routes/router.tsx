@@ -1,18 +1,19 @@
 import { createBrowserRouter } from "react-router";
-
 import AuthRootLayout from "../../pages/auth-root";
 import ProtectRoutes from "../guards/ProtectRoutes";
+
+import Home from "../../pages/home";
+import Media from "../../pages/media";
+import Blogs from "../../pages/blogs";
 import SignIn from "../../pages/sign-in";
+import RootLayout from "../../pages/root";
+import EditBlog from "../../pages/edit-blog";
+import ErrorPage from "../../pages/error-page";
+import CreateBlog from "../../pages/create-blog";
 import ForgotPassword from "../../pages/forgot-password";
 import ChangePassword from "../../pages/change-password";
 import SuccessMessage from "../../pages/success-message";
-import Home from "../../pages/home";
-import RootLayout from "../../pages/root";
 import NotAllowedWarningPage from "../../pages/not-allowed";
-import Media from "../../pages/media";
-import Blogs from "../../pages/blogs";
-import CreateBlog from "../../pages/create-blog";
-import EditBlog from "../../pages/edit-blog";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +22,8 @@ export const router = createBrowserRouter([
         <AuthRootLayout />
       </ProtectRoutes>
     ),
+    errorElement: <ErrorPage />,
+
     children: [
       {
         path: "/sign-in",

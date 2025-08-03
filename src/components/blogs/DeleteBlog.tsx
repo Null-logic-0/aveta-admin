@@ -1,9 +1,9 @@
+import Button from "../UI/Button";
 import Modal from "../UI/modal/Modal";
-import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "../../store";
 import { close } from "../../store/UI-slice";
+import { useDispatch, useSelector } from "react-redux";
 import { useDeleteBlog } from "../../hooks/useDeleteBlog";
-import Button from "../UI/Button";
 
 function DeleteBlog({ blogId }: { blogId: number }) {
   const { mutate, isPending } = useDeleteBlog({ id: blogId });

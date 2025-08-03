@@ -1,8 +1,8 @@
 import { Image } from "antd";
-import defaultImage from "../../assets/default-image.jpg";
 import ImageCardHeader from "./ImageCardHeader";
-import { useDeleteEntityImage } from "../../hooks/useDeleteEntityImage";
 import SpinnerMini from "../UI/spinner-mini/SpinnerMini";
+import defaultImage from "../../assets/default-image.jpg";
+import { useDeleteEntityImage } from "../../hooks/useDeleteEntityImage";
 
 type ImageProps = {
   image: string;

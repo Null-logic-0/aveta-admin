@@ -1,7 +1,8 @@
-import { Link } from "react-router";
-import NavMenuItem from "./NavMenuItem";
 import Logo from "../UI/Logo";
 import UserProfileMenu from "../user-profile-menu/UserProfileMenu";
+
+import { Link } from "react-router";
+import NavMenuItem from "./NavMenuItem";
 
 function NavMenu() {
   return (

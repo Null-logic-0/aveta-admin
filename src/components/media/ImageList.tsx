@@ -1,7 +1,7 @@
-import type { EntityImageDataInterface } from "../../interfaces/entity-images.interface";
 import AppResult from "../UI/Result";
-import Spinner from "../UI/spinner/Spinner";
 import ImageCard from "./ImageCard";
+import Spinner from "../UI/spinner/Spinner";
+import type { EntityImageDataInterface } from "../../interfaces/entity-images.interface";
 
 type ImageListProps = {
   images: EntityImageDataInterface[];
