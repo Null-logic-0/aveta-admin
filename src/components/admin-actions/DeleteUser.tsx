@@ -1,15 +1,16 @@
-import { Button } from "antd";
-import { DeleteFilled } from "@ant-design/icons";
-import { useDispatch, useSelector } from "react-redux";
+import Button from "../UI/Button";
+import Modal from "../UI/modal/Modal";
+
 import type { RootState } from "../../store";
-import { useDeleteUser } from "../../hooks/useDeleteUser";
+import { DeleteFilled } from "@ant-design/icons";
 import { close, open } from "../../store/UI-slice";
-import AppModal from "../UI/Modal";
+import { useDispatch, useSelector } from "react-redux";
+import { useDeleteUser } from "../../hooks/useDeleteUser";
 
 function DeleteUser({ id }: { id: number }) {
-  const showModal = useSelector((state: RootState) => state.ui.active);
-  const dispatch = useDispatch();
   const { mutate, isPending } = useDeleteUser({ id });
+  const active = useSelector((state: RootState) => state.ui.active);
+  const dispatch = useDispatch();
 
   const openModalHandler = () => {
     dispatch(open(id));
@@ -19,23 +20,35 @@ function DeleteUser({ id }: { id: number }) {
   };
   return (
     <>
-      <Button onClick={openModalHandler} type="text">
+      <button onClick={openModalHandler} className="cursor-pointer">
         <DeleteFilled className=" text-xl" />
-      </Button>
-      <AppModal
-        title="Delete Account"
-        onClose={closeModalHandler}
-        isOpen={showModal === id}
-        onOk={() => {
-          mutate();
-          closeModalHandler();
-        }}
-        loading={isPending}
-      >
-        <p className="text-sm font-semibold">
-          Do you really want to delete user with ID:{id}?
-        </p>
-      </AppModal>
+      </button>
+      {active === id && (
+        <Modal onClose={closeModalHandler}>
+          <p className="text-lg font-semibold mb-6 text-center text-white">
+            Are you sure you want to delete user with ID:{id}?
+          </p>
+          <div className="flex justify-center gap-2 items-center">
+            <Button
+              isDisabled={isPending}
+              buttonType="outline"
+              onClick={closeModalHandler}
+              className="text-white"
+              type="button"
+            >
+              Cancel
+            </Button>
+            <Button
+              className="text-white"
+              onClick={() => mutate()}
+              isDisabled={isPending}
+              isPending={isPending}
+            >
+              {isPending ? "Deleting..." : "Delete"}
+            </Button>
+          </div>
+        </Modal>
+      )}
     </>
   );
 }

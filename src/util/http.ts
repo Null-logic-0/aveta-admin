@@ -12,6 +12,8 @@ import type { GetMeResponse } from "../interfaces/current-user-response.interfac
 import { URL } from "../constants/url.constants";
 import type { UpdateUserRoleInterface } from "../interfaces/user.interface";
 import type { BlogFieldsInterface } from "../interfaces/blog.interface";
+import type { EntityImageType } from "../enums/entity-images.enum";
+import type { EntityImageInterface } from "../interfaces/entity-images.interface";
 
 export async function signin(data: SignInRequest): Promise<AuthResponse> {
   try {
@@ -291,5 +293,69 @@ export async function deleteBlog(token: string, blogId: number) {
     });
   } catch (err) {
     throw buildApiError(`Failed to delete blog!`, 500, err);
+  }
+}
+
+// Avatars&Themes
+
+export async function getAllEntityImages(
+  token: string,
+  type?: EntityImageType,
+
+  limit?: number,
+  page?: number
+) {
+  assertTokenExists(token);
+  try {
+    const response = await axios.get(`${URL}/entity-images`, {
+      params: {
+        type,
+        limit,
+        page,
+      },
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (err) {
+    throw buildApiError("Failed to fetch media!", 500, err);
+  }
+}
+
+export async function uploadEntityImage(
+  token: string,
+  data: EntityImageInterface
+) {
+  assertTokenExists(token);
+  const formData = new FormData();
+  formData.append("image", data.image);
+  formData.append("type", data.type);
+
+  try {
+    const response = await axios.post(`${URL}/entity-images`, formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (err) {
+    throw buildApiError("Failed to upload media!", 500, err);
+  }
+}
+
+export async function deleteEntityImage(token: string, id: number) {
+  assertTokenExists(token);
+  try {
+    return await axios.delete(`${URL}/entity-images/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      withCredentials: true,
+    });
+  } catch (err) {
+    throw buildApiError("Failed to delete media!", 500, err);
   }
 }

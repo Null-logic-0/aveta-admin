@@ -62,7 +62,7 @@ export const columns: ColumnsType<UserInterface> = [
     title: "Actions",
     key: "actions",
     render: (_, record) => (
-      <div className="flex gap-2">
+      <div className="flex gap-4 items-center">
         <ToggleBlockUser id={record.id} isBlocked={record.isBlocked} />
         <DeleteUser id={record.id} />
       </div>

@@ -1,4 +1,5 @@
 import BlogForm from "../components/blogs/BlogForm";
+import Heading from "../components/UI/Heading";
 import { useCreateBlog } from "../hooks/useCreateBlog";
 
 function CreateBlog() {
@@ -21,13 +22,14 @@ function CreateBlog() {
   }
 
   return (
-    <>
+    <main className="flex flex-col items-center justify-center gap-8 w-full">
+      <Heading title="Create new blog" isTitle />
       <BlogForm
         onSubmit={submitHandler}
         isPending={isPending}
         error={formErrors}
       />
-    </>
+    </main>
   );
 }
 

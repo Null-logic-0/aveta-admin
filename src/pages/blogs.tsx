@@ -6,6 +6,7 @@ import BlogCard from "../components/blogs/BlogCard";
 import Spinner from "../components/UI/spinner/Spinner";
 import { useFetchBlogs } from "../hooks/useFetchBlogs";
 import type { BlogInterface } from "../interfaces/blog.interface";
+import Heading from "../components/UI/Heading";
 
 function Blogs() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -32,7 +33,8 @@ function Blogs() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center gap-8 w-full">
+    <main className="flex flex-col items-center justify-center gap-8 w-full">
+      <Heading title="Blogs" isTitle />
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center w-full">
         {!isError &&
           !isPending &&
@@ -42,7 +44,7 @@ function Blogs() {
               title={blog.title}
               excerpt={blog.excerpt}
               media={blog?.media || ""}
-              link={`/edit-blog/${blog.id}`}
+              blogId={blog.id}
             />
           ))}
       </ul>
@@ -53,7 +55,7 @@ function Blogs() {
         onChange={(page) => setCurrentPage(page)}
         showSizeChanger={false}
       />
-    </div>
+    </main>
   );
 }
 

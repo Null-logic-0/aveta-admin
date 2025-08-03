@@ -1,4 +1,3 @@
-import { Button } from "antd";
 import { LockFilled, UnlockFilled } from "@ant-design/icons";
 import toast from "react-hot-toast";
 import { useToggleBlockUser } from "../../hooks/useToggleBlockUser";
@@ -11,7 +10,7 @@ type ToggleBlockUserType = {
 function ToggleBlockUser({ id, isBlocked }: ToggleBlockUserType) {
   const { mutate, isPending } = useToggleBlockUser({ id });
   return (
-    <Button
+    <button
       disabled={isPending}
       onClick={() => {
         mutate();
@@ -19,14 +18,13 @@ function ToggleBlockUser({ id, isBlocked }: ToggleBlockUserType) {
           `User ${!isBlocked ? "blocked" : "Unblocked"} successfully!`
         );
       }}
-      type="text"
     >
       {isBlocked ? (
         <LockFilled className="text-xl" />
       ) : (
         <UnlockFilled className="text-xl" />
       )}
-    </Button>
+    </button>
   );
 }
 
