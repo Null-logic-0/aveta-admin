@@ -48,13 +48,15 @@ function Blogs() {
             />
           ))}
       </ul>
-      <Pagination
-        current={pagination?.currentPage || 1}
-        total={pagination?.totalItems || 0}
-        pageSize={pagination?.itemsPerPage || 6}
-        onChange={(page) => setCurrentPage(page)}
-        showSizeChanger={false}
-      />
+      {!isError && !isPending && !blogs && (
+        <Pagination
+          current={pagination?.currentPage || 1}
+          total={pagination?.totalItems || 0}
+          pageSize={pagination?.itemsPerPage || 6}
+          onChange={(page) => setCurrentPage(page)}
+          showSizeChanger={false}
+        />
+      )}
     </main>
   );
 }
