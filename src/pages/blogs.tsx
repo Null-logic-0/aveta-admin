@@ -28,7 +28,7 @@ function Blogs() {
     );
   }
 
-  if (!isPending && !isError && blogs.length === 0) {
+  if (!isPending && !isError && blogs?.length === 0) {
     return <Empty description={"No Blogs!"} />;
   }
 
