@@ -22,15 +22,16 @@ function UserTable() {
   return (
     <div className="flex flex-col gap-6  items-center justify-center w-full">
       <Heading title="All Users" isTitle />
-
-      <Table
-        columns={columns}
-        dataSource={userDataArray}
-        rowKey="id"
-        loading={isPending}
-        className="w-full"
-        pagination={{ pageSize: 10 }}
-      />
+      {!users && (
+        <Table
+          columns={columns}
+          dataSource={userDataArray}
+          rowKey="id"
+          loading={isPending}
+          className="w-full"
+          pagination={{ pageSize: 10 }}
+        />
+      )}
     </div>
   );
 }
