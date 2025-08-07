@@ -19,7 +19,7 @@ function UserTable() {
       </div>
     );
 
-  if (users?.length === 0) {
+  if (!users) {
     return <Empty description={"No Registered Users!"} />;
   }
 
