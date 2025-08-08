@@ -16,7 +16,7 @@ function BlogCard({ media, title, excerpt, blogId }: BlogCardType) {
         <img
           src={media || defaultImage}
           alt={title}
-          className="object-cover rounded-xl h-[207px] max-w-[346px]"
+          className="object-cover rounded-xl h-[207px] w-[326px]"
         />
         <div className="absolute opacity-0 transition-all group-hover:opacity-100">
           <BlogActionButtons blogId={blogId} />

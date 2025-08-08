@@ -53,7 +53,7 @@ function BlogForm({ onSubmit, isPending, error, blog }: BlogFormProps) {
         <Button
           buttonType="outline"
           type="button"
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/blogs")}
           className="w-[14%] max-md:w-full"
         >
           Cancel
