@@ -39,7 +39,7 @@ function Media() {
         isError={isError}
         error={error?.message || "Oops...something went wrong!"}
       />
-      {!isPending && !isError && !images && (
+      {!isPending && !isError && images?.length === 0 && (
         <div className="flex justify-center">
           <Pagination
             current={pagination?.currentPage || 1}
