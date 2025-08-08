@@ -48,7 +48,7 @@ function Blogs() {
             />
           ))}
       </ul>
-      {!isError && !isPending && !blogs && (
+      {!isError && !isPending && (
         <Pagination
           current={pagination?.currentPage || 1}
           total={pagination?.totalItems || 0}
