@@ -1,69 +1,69 @@
-# React + TypeScript + Vite
+Aveta Admin
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A dynamic and user-friendly Admin Dashboard for the Aveta platform. Built to streamline content, user, and system management—all wrapped in a modular, responsive interface.
 
-Currently, two official plugins are available:
+Technology Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Add GitHub-style badges to highlight your tools and frameworks:
 
-## Expanding the ESLint configuration
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![React Query](https://img.shields.io/badge/React_Query-FF4154?style=for-the-badge&logo=reactquery&logoColor=white)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Key Features
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Responsive Dashboard Layout for managing content, users, roles, or other system entities
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Interactive Data Management via tables, filters, and inline editing tools
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Secure Login Flow with authentication and role-based access control (if enabled)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Fast Data Fetching through React Query for caching, optimistic updates, and error handling
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Clean Architecture with clear separation between pages, components, and API integration layers
+
+Utility-first Styling with Tailwind for rapid UI development and consistency
+
+Getting Started
+
+Clone the repository:
+
+    git clone https://github.com/Null-logic-0/aveta-admin.git
+    cd aveta-admin
+
+Install dependencies:
+
+    npm install
+
+Run in development mode:
+
+    npm run dev
+
+Visit http://localhost:5173 (or your specified port) to explore the dashboard.
+
+<img width="1910" height="983" alt="login" src="https://github.com/user-attachments/assets/ba977ab7-bcb8-4f8c-965a-b899df2437ca" />
+
+<img width="1910" height="983" alt="home" src="https://github.com/user-attachments/assets/3a5ff3a2-1b84-46d0-b19d-54a1f2b5b4d8" />
+
+<img width="1910" height="983" alt="create-blog" src="https://github.com/user-attachments/assets/fc3e5658-1dab-4f43-b821-24b99be5e7a5" />
+
+<img width="1910" height="983" alt="blogs" src="https://github.com/user-attachments/assets/152d4e54-3a6a-4ac3-b985-b5c6581f3294" />
+
+
+
+Aveta Backend
+
+https://github.com/Null-logic-0/aveta-ai-backend
+
+Aveta Frontend (app)
+
+https://github.com/Null-logic-0/aveta-frontend
+
+Aveta Frontend (Landing page)
+
+https://github.com/Null-logic-0/aveta-landing
+
+
